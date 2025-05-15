@@ -1,26 +1,39 @@
-# E-commerce Backend API
+# E-commerce Backend System
 
-A RESTful API for an e-commerce platform built with Node.js, Express, TypeScript, and PostgreSQL.
+## Overview
+This is a backend system for an e-commerce platform built with Node.js, Express, and PostgreSQL. The system includes features for product management, user management, order processing, and email notifications.
 
 ## Features
+- Product Management
+  - View all product categories
+  - Get products by category
+  - Search products with filters
+  - Create new products
 
-1. User order management
-2. Product and category management
-3. Order analytics (average order value, churn rate)
-4. Product search with filters
-5. Asynchronous order confirmation emails using Kafka
+- User Management
+  - Create new users
+  - Store user information
+
+- Order Processing
+  - Create new orders
+  - Calculate total price
+  - Process payment methods
+  - Update product inventory
+
+- Email Notifications
+  - Order confirmation emails
+  - Asynchronous email processing
 
 ## Prerequisites
+- Node.js (v14 or higher)
+- PostgreSQL (v12 or higher)
+- npm or yarn
 
-- Node.js (v18 or higher)
-- Docker and Docker Compose
-- PostgreSQL (if running locally)
-
-## Setup
+## Installation
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone [repository-url]
 cd ecommerce-backend
 ```
 
@@ -30,70 +43,107 @@ npm install
 ```
 
 3. Create a `.env` file in the root directory with the following variables:
-```
-NODE_ENV=development
-PORT=3000
-
-# Database
+```env
+DB_USER=your_db_user
 DB_HOST=localhost
+DB_NAME=geekup
+DB_PASSWORD=your_db_password
 DB_PORT=5432
-DB_USERNAME=postgres
-DB_PASSWORD=postgres
-DB_DATABASE=ecommerce
-
-# Kafka
-KAFKA_BROKERS=localhost:9092
-
-# Email
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USER=your-email@gmail.com
-SMTP_PASS=your-app-password
+PORT=3000
 ```
 
-4. Start the application using Docker Compose:
+4. Initialize the database:
 ```bash
-docker-compose up -d
+psql -U your_db_user -d geekup -f sql/init.sql
 ```
 
-## API Endpoints
+## Running the Application
 
-### Orders
-- `POST /api/orders` - Create a new order
-- `GET /api/orders/average-value` - Get average order value by month
-- `GET /api/orders/churn-rate` - Get customer churn rate
-
-### Products
-- `GET /api/categories` - Get all product categories
-- `GET /api/categories/:categoryId/products` - Get products by category
-- `GET /api/products/search` - Search products with filters
-
-## Development
-
-1. Start the development server:
+1. Start the server:
 ```bash
-npm run dev
+npm start
 ```
 
-2. Run database migrations:
-```bash
-npm run migration:run
+2. The server will run on `http://localhost:3000`
+
+## API Documentation
+
+### Product APIs
+
+1. Get all categories:
+```
+GET /api/categories
 ```
 
-## Deployment
-
-The application is containerized and can be deployed to any cloud platform that supports Docker containers (e.g., AWS EC2, Google Cloud Run, etc.).
-
-1. Build the Docker image:
-```bash
-docker build -t ecommerce-backend .
+2. Get products by category:
+```
+GET /api/categories/:categoryId/products
 ```
 
-2. Run the container:
-```bash
-docker run -p 3000:3000 ecommerce-backend
+3. Search products:
 ```
+GET /api/products/search?keyword=&minPrice=&maxPrice=&color=&size=
+```
+
+4. Create new product:
+```
+POST /api/products
+Body: {
+    "name": "string",
+    "price": number,
+    "size": "string",
+    "quantity": number,
+    "color": "string",
+    "categoryid": number
+}
+```
+
+### User APIs
+
+1. Create new user:
+```
+POST /api/users
+Body: {
+    "name": "string",
+    "email": "string",
+    "phone": "string",
+    "province": "string",
+    "district": "string",
+    "comune": "string",
+    "address": "string",
+    "housing_type": "string"
+}
+```
+
+### Order APIs
+
+1. Create new order:
+```
+POST /api/orders
+Body: {
+    "userId": number,
+    "items": [
+        {
+            "productId": number,
+            "quantity": number
+        }
+    ],
+    "paymentOnline": boolean
+}
+```
+
+## Testing the API
+
+You can use the provided `index.html` file to test all APIs. Open the file in your browser and use the interface to interact with the APIs.
+
+## Email Notifications
+
+The system sends order confirmation emails asynchronously using Kafka. Please check your email (including spam folder) after creating an order.
+
+## Contributing
+
+Feel free to submit issues and enhancement requests.
 
 ## License
 
-MIT
+This project is licensed under the MIT License.
