@@ -1,6 +1,8 @@
 # E-commerce Backend System
 
 ## Overview
+This the 48-hour test given by Geek up in the Product Backend Summer internship 2025
+
 This is a backend system for an e-commerce platform built with Node.js,Docker, Kafka and PostgreSQL. The system includes features for product management, user management, order processing, and email notifications.
 
 ## Features
