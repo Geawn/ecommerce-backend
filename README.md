@@ -25,6 +25,7 @@ This is a backend system for an e-commerce platform built with Node.js,Docker, K
 - Email Notifications
   - Order confirmation emails
   - Asynchronous email processing
+  - PLS REMEMBER TO CHECK YOUR SPAM OR ALL EMAIL IN GMAIL
 
 ## Prerequisites
 - Node.js (v14 or higher)
