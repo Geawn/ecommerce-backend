@@ -22,7 +22,7 @@ This is a backend system for an e-commerce platform built with Node.js,Docker, K
   - Process payment methods
   - Update product inventory
 
-- Email Notifications
+- Email Notifications (using kafka)
   - Order confirmation emails
   - Asynchronous email processing
   - PLS REMEMBER TO CHECK YOUR SPAM OR ALL EMAIL IN GMAIL
