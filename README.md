@@ -1,7 +1,9 @@
 # E-commerce Backend System
 
 ## Overview
-This is a backend system for an e-commerce platform built with Node.js, Express, and PostgreSQL. The system includes features for product management, user management, order processing, and email notifications.
+This the 48-hour test given by Geek up in the Product Backend Summer internship 2025
+
+This is a backend system for an e-commerce platform built with Node.js,Docker, Kafka and PostgreSQL. The system includes features for product management, user management, order processing, and email notifications.
 
 ## Features
 - Product Management
@@ -20,9 +22,10 @@ This is a backend system for an e-commerce platform built with Node.js, Express,
   - Process payment methods
   - Update product inventory
 
-- Email Notifications
+- Email Notifications (using kafka)
   - Order confirmation emails
   - Asynchronous email processing
+  - PLS REMEMBER TO CHECK YOUR SPAM OR ALL EMAIL IN GMAIL
 
 ## Prerequisites
 - Node.js (v14 or higher)
@@ -36,35 +39,14 @@ This is a backend system for an e-commerce platform built with Node.js, Express,
 git clone [repository-url]
 cd ecommerce-backend
 ```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Create a `.env` file in the root directory with the following variables:
-```env
-DB_USER=your_db_user
-DB_HOST=localhost
-DB_NAME=geekup
-DB_PASSWORD=your_db_password
-DB_PORT=5432
-PORT=3000
-```
-
-4. Initialize the database:
-```bash
-psql -U your_db_user -d geekup -f sql/init.sql
-```
-
 ## Running the Application
-
-1. Start the server:
+2. Use Docker:
 ```bash
-npm start
+Docker compose-up --build
 ```
+The backend is exposed to localhost:3000
 
-2. The server will run on `http://localhost:3000`
+2. The Web will run on `http://localhost:8080`
 
 ## API Documentation
 
@@ -84,7 +66,11 @@ GET /api/categories/:categoryId/products
 ```
 GET /api/products/search?keyword=&minPrice=&maxPrice=&color=&size=
 ```
+Example Request:
 
+```
+GET /api/products/search?keyword=shirt&minPrice=100&maxPrice=500&color=red&size=L
+```
 4. Create new product:
 ```
 POST /api/products
