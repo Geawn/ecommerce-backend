@@ -4,6 +4,12 @@
 This the 48-hour test given by Geek up in the Product Backend Summer internship 2025
 
 This is a backend system for an e-commerce platform built with Node.js,Docker, Kafka and PostgreSQL. The system includes features for product management, user management, order processing, and email notifications.
+### Some results
+<p align="center">
+  <img src="images/Screenshot 2025-05-16 005311.png" alt="Feature Graphic" width="30%">
+  <img src="images/Screenshot 2025-05-16 005329.png" alt="Feature Graphic" width="30%">
+  <img src="images/Screenshot 2025-05-16 005353.png" alt="Feature Graphic" width="30%">
+</p>
 
 ## Features
 - Product Management
