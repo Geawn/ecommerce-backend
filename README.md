@@ -11,6 +11,14 @@ This is a backend system for an e-commerce platform built with Node.js,Docker, K
   <img src="images/Screenshot 2025-05-16 005353.png" alt="Feature Graphic" width="80%">
 </p>
 
+Nodemailer
+
+<p align="center">
+  <img src="images/image.png" alt="Feature Graphic" width="80%">
+  
+</p>
+
+
 ## Features
 - Product Management
   - View all product categories
